@@ -1,0 +1,59 @@
+﻿@model ControlEscolarMVC.Models.Materia
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Modificar</h1>
+
+<h4>Materia</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdMateria" />
+            <div class="form-group">
+                <label asp-for="ClaveMateria" class="control-label"></label>
+                <input asp-for="ClaveMateria" class="form-control" />
+                <span asp-validation-for="ClaveMateria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProfesor" class="control-label"></label>
+                <select asp-for="IdProfesor" class="form-control" asp-items="ViewBag.Nombre"></select>
+                <span asp-validation-for="IdProfesor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProgramaEstudio" class="control-label"></label>
+                <select asp-for="IdProgramaEstudio" class="form-control" asp-items="ViewBag.Nombre"></select>
+                <span asp-validation-for="IdProgramaEstudio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estatus" class="control-label"></label>
+                <select asp-for="Estatus" class="form-control">
+                    <option value="1">Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+                <span asp-validation-for="Estatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaRegistro" class="control-label"></label>
+                <input asp-for="FechaRegistro" class="form-control" />
+                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-warning" asp-action="Index">&nbsp;Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
